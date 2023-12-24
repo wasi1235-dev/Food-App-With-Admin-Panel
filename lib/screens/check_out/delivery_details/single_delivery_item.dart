@@ -6,7 +6,7 @@ class SingleDeliveryItem extends StatelessWidget {
   final String address;
   final String number;
   final String addressType;
-  SingleDeliveryItem({this.title, this.addressType, this.address, this.number});
+  SingleDeliveryItem({required this.title, required this.addressType, required this.address, required this.number});
   @override
   Widget build(BuildContext context) {
     return Column(

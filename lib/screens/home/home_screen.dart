@@ -15,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  ProductProvider productProvider;
+  late ProductProvider productProvider;
 
   Widget _buildHerbsProduct(context) {
     return Column(

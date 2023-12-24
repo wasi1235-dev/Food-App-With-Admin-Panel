@@ -6,7 +6,7 @@ import 'package:food_app/screens/home/drawer_side.dart';
 
 class MyProfile extends StatefulWidget {
   UserProvider userProvider;
-  MyProfile({this.userProvider});
+  MyProfile({required this.userProvider});
 
   @override
   _MyProfileState createState() => _MyProfileState();
@@ -14,7 +14,7 @@ class MyProfile extends StatefulWidget {
 
 class _MyProfileState extends State<MyProfile> {
   @override
-  Widget listTile({IconData icon, String title}) {
+  Widget listTile({required IconData icon, required String title}) {
     return Column(
       children: [
         Divider(

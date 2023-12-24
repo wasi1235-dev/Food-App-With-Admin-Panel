@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:food_app/models/product_model.dart';
 
 class ProductProvider with ChangeNotifier {
-  ProductModel productModel;
+  late ProductModel productModel;
 
   List<ProductModel> search = [];
   productModels(QueryDocumentSnapshot element) {

@@ -5,10 +5,10 @@ import 'package:food_app/models/user_model.dart';
 
 class UserProvider with ChangeNotifier {
   void addUserData({
-    User currentUser,
-    String userName,
-    String userImage,
-    String userEmail,
+    required User currentUser,
+    required String userName,
+    required String userImage,
+    required String userEmail,
   }) async {
     await FirebaseFirestore.instance
         .collection("usersData")
@@ -23,13 +23,13 @@ class UserProvider with ChangeNotifier {
     );
   }
 
-  UserModel currentData;
+  late UserModel currentData;
 
   void getUserData() async {
     UserModel userModel;
     var value = await FirebaseFirestore.instance
         .collection("usersData")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .get();
     if (value.exists) {
       userModel = UserModel(

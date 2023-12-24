@@ -19,7 +19,7 @@ class CheckoutProvider with ChangeNotifier {
   TextEditingController city = TextEditingController();
   TextEditingController aera = TextEditingController();
   TextEditingController pincode = TextEditingController();
-  LocationData setLoaction;
+  late LocationData setLoaction;
 
   void validator(context, myType) async {
     if (firstName.text.isEmpty) {
@@ -49,7 +49,7 @@ class CheckoutProvider with ChangeNotifier {
       notifyListeners();
       await FirebaseFirestore.instance
           .collection("AddDeliverAddress")
-          .doc(FirebaseAuth.instance.currentUser.uid)
+          .doc(FirebaseAuth.instance.currentUser?.uid)
           .set({
         "firstname": firstName.text,
         "lastname": lastName.text,
@@ -82,7 +82,7 @@ class CheckoutProvider with ChangeNotifier {
     DeliveryAddressModel deliveryAddressModel;
     DocumentSnapshot _db = await FirebaseFirestore.instance
         .collection("AddDeliverAddress")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .get();
     if (_db.exists) {
       deliveryAddressModel = DeliveryAddressModel(
@@ -113,14 +113,14 @@ class CheckoutProvider with ChangeNotifier {
 ////// Order /////////
 
   addPlaceOderData({
-    List<ReviewCartModel> oderItemList,
+    required List<ReviewCartModel> oderItemList,
     var subTotal,
     var address,
     var shipping,
   }) async {
     FirebaseFirestore.instance
         .collection("Order")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("MyOrders")
         .doc()
         .set(

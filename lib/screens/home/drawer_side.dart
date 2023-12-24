@@ -8,13 +8,13 @@ import 'package:food_app/screens/wishList/wish_list.dart';
 
 class DrawerSide extends StatefulWidget {
   UserProvider userProvider;
-  DrawerSide({this.userProvider});
+  DrawerSide({required this.userProvider});
   @override
   _DrawerSideState createState() => _DrawerSideState();
 }
 
 class _DrawerSideState extends State<DrawerSide> {
-  Widget listTile({String title, IconData iconData, Function onTap}) {
+  Widget listTile({required String title, required IconData iconData,void Function()? onTap}) {
     return Container(
       height: 50,
       child: ListTile(

@@ -13,27 +13,27 @@ class SingleItem extends StatefulWidget {
   int productPrice;
   String productId;
   int productQuantity;
-  Function onDelete;
+  void Function() onDelete;
   var productUnit;
   SingleItem(
-      {this.productQuantity,
-      this.productId,
-      this.productUnit,
-      this.onDelete,
-      this.isBool,
-      this.productImage,
-      this.productName,
-      this.productPrice,
-      this.wishList});
+      {required this.productQuantity,
+        required this.productId,
+        required this.productUnit,
+        required this.onDelete,
+        required this.isBool,
+        required this.productImage,
+        required this.productName,
+        required this.productPrice,
+        required this.wishList});
 
   @override
   _SingleItemState createState() => _SingleItemState();
 }
 
 class _SingleItemState extends State<SingleItem> {
-  ReviewCartProvider reviewCartProvider;
+  late ReviewCartProvider reviewCartProvider;
 
-  int count;
+  late int count;
   getCount() {
     setState(() {
       count = widget.productQuantity;

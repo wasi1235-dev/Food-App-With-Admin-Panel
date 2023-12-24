@@ -5,15 +5,15 @@ import 'package:food_app/models/product_model.dart';
 
 class WishListProvider with ChangeNotifier {
   addWishListData({
-    String wishListId,
-    String wishListName,
+    required String wishListId,
+    required String wishListName,
     var wishListPrice,
-    String wishListImage,
-    int wishListQuantity,
+    required String wishListImage,
+    required int wishListQuantity,
   }) {
     FirebaseFirestore.instance
         .collection("WishList")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("YourWishList")
         .doc(wishListId)
         .set({
@@ -33,7 +33,7 @@ class WishListProvider with ChangeNotifier {
     List<ProductModel> newList = [];
     QuerySnapshot value = await FirebaseFirestore.instance
         .collection("WishList")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("YourWishList")
         .get();
     value.docs.forEach(
@@ -64,7 +64,7 @@ class WishListProvider with ChangeNotifier {
 deleteWishtList(wishListId){
  FirebaseFirestore.instance
         .collection("WishList")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("YourWishList").doc(wishListId).delete();
 }
 

@@ -5,16 +5,16 @@ import 'package:food_app/models/review_cart_model.dart';
 
 class ReviewCartProvider with ChangeNotifier {
   void addReviewCartData({
-    String cartId,
-    String cartName,
-    String cartImage,
-    int cartPrice,
-    int cartQuantity,
+    required String cartId,
+    required String cartName,
+    required String cartImage,
+    required int cartPrice,
+    required int cartQuantity,
     var cartUnit,
   }) async {
     FirebaseFirestore.instance
         .collection("ReviewCart")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("YourReviewCart")
         .doc(cartId)
         .set(
@@ -33,15 +33,15 @@ class ReviewCartProvider with ChangeNotifier {
 
 
 void updateReviewCartData({
-    String cartId,
-    String cartName,
-    String cartImage,
-    int cartPrice,
-    int cartQuantity,
+    required String cartId,
+    required String cartName,
+    required String cartImage,
+    required int cartPrice,
+    required int cartQuantity,
   }) async {
     FirebaseFirestore.instance
         .collection("ReviewCart")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("YourReviewCart")
         .doc(cartId)
         .update(
@@ -67,7 +67,7 @@ void updateReviewCartData({
 
     QuerySnapshot reviewCartValue = await FirebaseFirestore.instance
         .collection("ReviewCart")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("YourReviewCart")
         .get();
     reviewCartValue.docs.forEach((element) {
@@ -107,7 +107,7 @@ getTotalPrice(){
   reviewCartDataDelete(cartId) {
     FirebaseFirestore.instance
         .collection("ReviewCart")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("YourReviewCart")
         .doc(cartId)
         .delete();

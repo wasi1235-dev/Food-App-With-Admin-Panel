@@ -18,7 +18,7 @@ class ProductOverview extends StatefulWidget {
   final int productPrice;
   final String productId;
   ProductOverview(
-      {this.productId, this.productImage, this.productName, this.productPrice});
+      {required this.productId, required this.productImage, required this.productName, required this.productPrice});
 
   @override
   _ProductOverviewState createState() => _ProductOverviewState();
@@ -28,12 +28,12 @@ class _ProductOverviewState extends State<ProductOverview> {
   SinginCharacter _character = SinginCharacter.fill;
 
   Widget bonntonNavigatorBar({
-    Color iconColor,
-    Color backgroundColor,
-    Color color,
-    String title,
-    IconData iconData,
-    Function onTap,
+    required Color iconColor,
+    required Color backgroundColor,
+    required Color color,
+    required String title,
+    required IconData iconData,
+    required void Function() onTap,
   }) {
     return Expanded(
       child: GestureDetector(
@@ -68,7 +68,7 @@ class _ProductOverviewState extends State<ProductOverview> {
   getWishtListBool() {
     FirebaseFirestore.instance
         .collection("WishList")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("YourWishList")
         .doc(widget.productId)
         .get()
@@ -190,7 +190,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                               activeColor: Colors.green[700],
                               onChanged: (value) {
                                 setState(() {
-                                  _character = value;
+                                  //_character = value;
                                 });
                               },
                             ),

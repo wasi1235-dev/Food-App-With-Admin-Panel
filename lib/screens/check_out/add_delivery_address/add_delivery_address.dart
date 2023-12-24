@@ -130,9 +130,9 @@ class _AddDeliverAddressState extends State<AddDeliverAddress> {
               value: AddressTypes.Home,
               groupValue: myType,
               title: Text("Home"),
-              onChanged: (AddressTypes value) {
+              onChanged: (AddressTypes? value) {
                 setState(() {
-                  myType = value;
+                  myType = value!;
                 });
               },
               secondary: Icon(
@@ -144,9 +144,9 @@ class _AddDeliverAddressState extends State<AddDeliverAddress> {
               value: AddressTypes.Work,
               groupValue: myType,
               title: Text("Work"),
-              onChanged: (AddressTypes value) {
+              onChanged: (AddressTypes? value) {
                 setState(() {
-                  myType = value;
+                  myType = value!;
                 });
               },
               secondary: Icon(
@@ -158,9 +158,9 @@ class _AddDeliverAddressState extends State<AddDeliverAddress> {
               value: AddressTypes.Other,
               groupValue: myType,
               title: Text("Other"),
-              onChanged: (AddressTypes value) {
+              onChanged: (AddressTypes? value) {
                 setState(() {
-                  myType = value;
+                  myType = value!;
                 });
               },
               secondary: Icon(

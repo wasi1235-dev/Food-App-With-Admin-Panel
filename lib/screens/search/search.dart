@@ -5,7 +5,7 @@ import 'package:food_app/widgets/single_item.dart';
 
 class Search extends StatefulWidget {
   final List<ProductModel> search;
-  Search({this.search});
+  Search({required this.search});
   @override
   _SearchState createState() => _SearchState();
 }
@@ -73,7 +73,7 @@ class _SearchState extends State<Search> {
                 isBool: false,
                 productImage: data.productImage,
                 productName: data.productName,
-                productPrice: data.productPrice,
+                productPrice: data.productPrice, productQuantity: 0, productId: '', productUnit: null, onDelete: () {  }, wishList: false,
               );
             }).toList(),
           )
