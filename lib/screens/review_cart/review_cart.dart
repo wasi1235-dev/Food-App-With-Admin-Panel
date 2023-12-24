@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/models/review_cart_model.dart';
 import 'package:food_app/providers/review_cart_provider.dart';
@@ -8,40 +7,40 @@ import 'package:food_app/widgets/single_item.dart';
 import 'package:provider/provider.dart';
 
 class ReviewCart extends StatelessWidget {
-  ReviewCartProvider reviewCartProvider;
+  late ReviewCartProvider reviewCartProvider;
   showAlertDialog(BuildContext context, ReviewCartModel delete) {
     // set up the buttons
-    Widget cancelButton = FlatButton(
-      child: Text("No"),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    );
-    Widget continueButton = FlatButton(
-      child: Text("Yes"),
-      onPressed: () {
-        reviewCartProvider.reviewCartDataDelete(delete.cartId);
-        Navigator.of(context).pop();
-      },
-    );
-
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Text("Cart Product"),
-      content: Text("Are you devete on cartProduct?"),
-      actions: [
-        cancelButton,
-        continueButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
+    // Widget cancelButton = FlatButton(
+    //   child: Text("No"),
+    //   onPressed: () {
+    //     Navigator.of(context).pop();
+    //   },
+    // );
+    // Widget continueButton = FlatButton(
+    //   child: Text("Yes"),
+    //   onPressed: () {
+    //     reviewCartProvider.reviewCartDataDelete(delete.cartId);
+    //     Navigator.of(context).pop();
+    //   },
+    // );
+    //
+    // // set up the AlertDialog
+    // AlertDialog alert = AlertDialog(
+    //   title: Text("Cart Product"),
+    //   content: Text("Are you devete on cartProduct?"),
+    //   actions: [
+    //     cancelButton,
+    //     continueButton,
+    //   ],
+    // );
+    //
+    // // show the dialog
+    // showDialog(
+    //   context: context,
+    //   builder: (BuildContext context) {
+    //     return alert;
+    //   },
+    // );
   }
 
   @override
@@ -69,7 +68,7 @@ class ReviewCart extends StatelessWidget {
             ),
             onPressed: () {
               if(reviewCartProvider.getReviewCartDataList.isEmpty){
-                return Fluttertoast.showToast(msg: "No Cart Data Found");
+                return null;
               }
               Navigator.of(context).push(
                 MaterialPageRoute(

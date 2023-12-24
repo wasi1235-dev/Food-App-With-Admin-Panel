@@ -3,13 +3,12 @@ import 'package:food_app/config/colors.dart';
 import 'package:food_app/models/delivery_address_model.dart';
 import 'package:food_app/providers/review_cart_provider.dart';
 import 'package:food_app/screens/check_out/delivery_details/single_delivery_item.dart';
-import 'package:food_app/screens/check_out/payment_summary/my_google_pay.dart';
 import 'package:food_app/screens/check_out/payment_summary/order_item.dart';
 import 'package:provider/provider.dart';
 
 class PaymentSummary extends StatefulWidget {
   final DeliveryAddressModel deliverAddressList;
-  PaymentSummary({this.deliverAddressList});
+  PaymentSummary({required this.deliverAddressList});
 
   @override
   _PaymentSummaryState createState() => _PaymentSummaryState();
@@ -29,9 +28,8 @@ class _PaymentSummaryState extends State<PaymentSummary> {
     reviewCartProvider.getReviewCartData();
 
     double discount = 30;
-    double discountValue;
-    double shippingChanrge = 3.7;
-    double total;
+    double? discountValue;
+    double? total;
     double totalPrice = reviewCartProvider.getTotalPrice();
     if (totalPrice > 300) {
       discountValue = (totalPrice * discount) / 100;
@@ -48,7 +46,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
       bottomNavigationBar: ListTile(
         title: Text("Total Amount"),
         subtitle: Text(
-          "\$${total + 5 ?? totalPrice}",
+          "\$${total! + 5 ?? totalPrice}",
           style: TextStyle(
             color: Colors.green[900],
             fontWeight: FontWeight.bold,
@@ -164,9 +162,9 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                   value: AddressTypes.Home,
                   groupValue: myType,
                   title: Text("Home"),
-                  onChanged: (AddressTypes value) {
+                  onChanged: (AddressTypes? value) {
                     setState(() {
-                      myType = value;
+                      myType = value!;
                     });
                   },
                   secondary: Icon(
@@ -178,9 +176,9 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                   value: AddressTypes.OnlinePayment,
                   groupValue: myType,
                   title: Text("OnlinePayment"),
-                  onChanged: (AddressTypes value) {
+                  onChanged: (AddressTypes? value) {
                     setState(() {
-                      myType = value;
+                      myType = value!;
                     });
                   },
                   secondary: Icon(

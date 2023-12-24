@@ -14,11 +14,11 @@ class Count extends StatefulWidget {
   var productUnit;
 
   Count({
-    this.productName,
+    required this.productName,
     this.productUnit,
-    this.productId,
-    this.productImage,
-    this.productPrice,
+    required this.productId,
+    required this.productImage,
+    required this.productPrice,
   });
   @override
   _CountState createState() => _CountState();
@@ -31,7 +31,7 @@ class _CountState extends State<Count> {
   getAddAndQuantity() {
     FirebaseFirestore.instance
         .collection("ReviewCart")
-        .doc(FirebaseAuth.instance.currentUser.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("YourReviewCart")
         .doc(widget.productId)
         .get()

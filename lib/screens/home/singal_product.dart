@@ -8,16 +8,16 @@ class SingalProduct extends StatefulWidget {
   final String productImage;
   final String productName;
   final int productPrice;
-  final Function onTap;
+  final void Function() onTap;
   final String productId;
   final ProductModel productUnit;
   SingalProduct(
-      {this.productId,
-      this.productImage,
-      this.productName,
-      this.productUnit,
-      this.onTap,
-      this.productPrice});
+      {required this.productId,
+        required this.productImage,
+        required this.productName,
+        required this.productUnit,
+        required this.onTap,
+        required this.productPrice});
 
   @override
   _SingalProductState createState() => _SingalProductState();
@@ -28,7 +28,7 @@ class _SingalProductState extends State<SingalProduct> {
   var firstValue;
   @override
   Widget build(BuildContext context) {
-    widget.productUnit.productUnit.firstWhere((element) {
+    widget.productUnit.productUnit?.firstWhere((element) {
       setState(() {
         firstValue = element;
       });
@@ -98,7 +98,7 @@ class _SingalProductState extends State<SingalProduct> {
                                               CrossAxisAlignment.start,
                                           children: widget
                                               .productUnit.productUnit
-                                              .map<Widget>((data) {
+                                              !.map<Widget>((data) {
                                             return Column(
                                               children: [
                                                 Padding(

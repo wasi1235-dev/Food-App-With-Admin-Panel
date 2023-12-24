@@ -13,7 +13,7 @@ class DeliveryDetails extends StatefulWidget {
 }
 
 class _DeliveryDetailsState extends State<DeliveryDetails> {
-   DeliveryAddressModel value;
+   late DeliveryAddressModel value;
   @override
   Widget build(BuildContext context) {
     CheckoutProvider deliveryAddressProvider = Provider.of(context);

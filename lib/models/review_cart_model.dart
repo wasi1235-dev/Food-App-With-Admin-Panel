@@ -6,11 +6,11 @@ class ReviewCartModel {
   int cartQuantity;
   var cartUnit;
   ReviewCartModel({
-    this.cartId,
-    this.cartUnit,
-    this.cartImage,
-    this.cartName,
-    this.cartPrice,
-    this.cartQuantity,
+    required this.cartId,
+    required this.cartUnit,
+    required this.cartImage,
+    required this.cartName,
+    required this.cartPrice,
+    required this.cartQuantity,
   });
 }
