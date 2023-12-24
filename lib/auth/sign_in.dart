@@ -15,30 +15,35 @@ class _SignInState extends State<SignIn> {
   late UserProvider userProvider;
 
   Future<User> _googleSignUp() async {
-    final GoogleSignIn _googleSignIn = GoogleSignIn(
-      scopes: ['email'],
-    );
-    final FirebaseAuth _auth = FirebaseAuth.instance;
+    try {
+      final GoogleSignIn _googleSignIn = GoogleSignIn(
+        scopes: ['email'],
+      );
+      final FirebaseAuth _auth = FirebaseAuth.instance;
 
-    final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-    final GoogleSignInAuthentication? googleAuth =
-    await googleUser?.authentication;
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
 
-    final User? user = (await _auth.signInWithCredential(credential)).user;
-    // print("signed in " + user.displayName);
-    userProvider.addUserData(
-      currentUser: user!,
-      userEmail: user.email!,
-      userImage: user.photoURL!,
-      userName: user.displayName!,
-    );
+      final User? user = (await _auth.signInWithCredential(credential)).user;
+      // print("signed in " + user.displayName);
+      userProvider.addUserData(
+        currentUser: user!,
+        userEmail: user.email!,
+        userImage: user.photoURL!,
+        userName: user.displayName!,
+      );
 
-    return user;
+      return user;
+    } catch (e) {
+      print(e);
+      throw e;
+    }
   }
 
   @override
